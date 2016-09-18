@@ -1,13 +1,20 @@
 package proclub.members;
 
+import java.awt.Dimension;
+import java.awt.Rectangle;
+import java.awt.Robot;
+import java.awt.Toolkit;
+import java.awt.image.BufferedImage;
 import java.io.*;
 import java.nio.file.*;
 import java.util.*;
 
+import javax.imageio.ImageIO;
+
 public class ProClub{
 	public static class Beginner extends Novice{
 		public static String tab(){ return "\t"; }
- 		public static String string(Object... objs){
+		public static String string(Object... objs){
 			return string(",", objs);
 		}		
 		public static String string(String separator, Object... objs){
@@ -18,7 +25,7 @@ public class ProClub{
 	}
 	public static class Novice extends Intermediate{
 		private static HashMap<String, Object> map = new HashMap<String, Object>();
-		
+
 		public static void println(Object... str){ System.out.println(Arrays.deepToString(str)); }
 		public static void println(String... str){ System.out.println(Arrays.deepToString(str)); }
 		public static void println(int... str){ System.out.println(Arrays.toString(str)); }
@@ -29,7 +36,7 @@ public class ProClub{
 		public static void println(long str){ System.out.println(str); }
 		public static void println(boolean str){ System.out.println(str); }
 		public static void println(){ System.out.println(); }
-		
+
 		public static void print(Object... str){ System.out.print(Arrays.deepToString(str)); }
 		public static void print(String... str){ System.out.print(Arrays.deepToString(str)); }
 		public static void print(int... str){ System.out.print(Arrays.toString(str)); }
@@ -51,7 +58,7 @@ public class ProClub{
 			for(String s : arr) set.add(s);
 			return set.toArray(new String[set.size()]);
 		}
-		
+
 		private static Scanner s = new Scanner(System.in);
 		public static String scan(){
 			String str = s.next();
@@ -65,8 +72,23 @@ public class ProClub{
 			int str = s.nextInt();
 			return str;
 		}
+		public static String[] copy(String... arr){ return Arrays.copyOf(arr, arr.length); }
+		public static int[] copy(int... arr){ return Arrays.copyOf(arr, arr.length); }
+		public static List copy(List arr){ List l = new ArrayList(); Collections.copy(arr, l); return l; }
+
+
 	}
 	public static class Intermediate extends Pro{
+		public static void sort(List arr){
+			Collections.sort(arr);
+		}
+		public static void sort(int... arr){
+			Arrays.sort(arr);
+		}
+		public static void sort(Object... arr){
+			Arrays.sort(arr);
+		}
+		
 		public static String read(File file){
 			if(!file.exists()){
 				warn("File does not exist! ");
@@ -111,7 +133,7 @@ public class ProClub{
 		public static boolean makeFolder(String str){
 			return makeFolder(new File(str));
 		}
-	
+
 		public static int toInt(String str){
 			try{
 				return Integer.valueOf(str);
@@ -124,13 +146,13 @@ public class ProClub{
 		public static double toDecimal(String str){
 			return Double.valueOf(str);
 		}
-		
+
 		public static ArrayList array(Object... objs){
 			ArrayList arr = new ArrayList();
 			for(Object o : objs) arr.add(o);
 			return arr;
 		}
-	
+
 		public static int getHour(){
 			Calendar calendar = GregorianCalendar.getInstance(); // creates a new calendar instance
 			calendar.setTime(new Date());
@@ -163,11 +185,21 @@ public class ProClub{
 			String[] arr = new String[]{"Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"};
 			return arr[d];
 		}
+		public void takeScreenshot(String fileName) throws Exception {
+			Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+			Rectangle screenRectangle = new Rectangle(screenSize);
+			Robot robot = new Robot();
+			BufferedImage image = robot.createScreenCapture(screenRectangle);
+			ImageIO.write(image, "png", new File(fileName));
+		}
 	}
 	public static class Pro extends ProClub{
-		public static double challenge(int x){ return (3 * (x + 2)) % 10; }
+		public static double challenge1(int x){ return x + 2; }
+		public static double challenge2(int x){ return (3 * challenge1(x)); }
+		public static double challenge3(int x){ return challenge2(x) % 10; }
+		public static double challenge4(int x){ return challenge3(x) * challenge3(x) + 1; }
 	}
-	
+
 	private static void warn(String warning){
 		System.err.println(warning);
 	}

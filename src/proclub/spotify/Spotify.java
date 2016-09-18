@@ -1,5 +1,10 @@
 package proclub.spotify;
 
-public class Spotify {
+import proclub.api.API;
 
+public class Spotify extends API{
+
+	public Spotify(){
+		super("Spotify");
+	}
 }
