@@ -1,4 +1,4 @@
-package proclub.api;
+
 
 import proclub.members.ProClub;
 import proclub.spotify.Spotify;
@@ -13,8 +13,10 @@ public class Main extends ProClub.Beginner{
 	public static void main(String[] args) {
 		//Wolfram Alpha
 		WolframAlpha wa = new WolframAlpha();
-		wa.prepareQuery("((3 * x + 6) mod 10)");
+		wa.auth();
+		wa.prepareQuery("how many people are in my country");
 		WolframResponse wr = wa.executeQuery();
+		println(wr);
 		println(wr.getPods());
 		println(wr.getPod("Input"));
 

@@ -6,7 +6,11 @@ public class API {
 	private HashMap<String, String> map = new HashMap<String, String>();
 	private String API_NAME = "Abstract API";
 
-	public API(String name){ API_NAME = name; }
+	/**
+	 * @param name - Stored and used to tag utility methods, 
+	 * such as warn which begins with the API Name.
+	 */
+	public API(String name){ API_NAME = name;}
 
 	
 	//General API uses
@@ -47,4 +51,10 @@ public class API {
 		System.err.println(API_NAME + ": " + warning);
 		return null;
 	}
+	
+	/**
+	 * Get the name of this API.
+	 * @return String - contains the name of this API 
+	 */
+	public String getName(){ return API_NAME; }
 }

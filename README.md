@@ -15,6 +15,8 @@ Another idea that I had was to have a sort of "easy method" kind of thing. All m
 
 ## Wolfram Alpha
 
+	Google Doc: https://docs.google.com/document/d/1AYL7wbrcCx8cVR7tT1wMDAavTHj0E4djNkOaB25OHjw/edit?usp=sharing
+
 ## Wikipedia
 
 ## Dropbox
