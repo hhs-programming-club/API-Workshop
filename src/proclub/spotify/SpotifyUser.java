@@ -8,8 +8,10 @@ public class SpotifyUser {
 	private User user;
 	
 	public SpotifyUser(String key) {
+		Spotify spotify = new Spotify();
+		
 		this.key = key;
-		UserRequest request = Spotify.api.getUser(this.key).build();
+		UserRequest request = spotify.getApi().getUser(this.key).build();
 
 		try {
 			user = request.get();
@@ -20,8 +22,10 @@ public class SpotifyUser {
 	}
 	
 	public SpotifyUser() {
+		Spotify spotify = new Spotify();
+		
 		this.key = "hhsprogrammingclub";
-		UserRequest request = Spotify.api.getUser(this.key).build();
+		UserRequest request = spotify.getApi().getUser(this.key).build();
 
 		try {
 			user = request.get();

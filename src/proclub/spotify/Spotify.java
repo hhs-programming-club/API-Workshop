@@ -13,13 +13,17 @@ import com.wrapper.spotify.models.Track;
 import com.wrapper.spotify.models.User;
 
 public class Spotify {
-	public static final String clientId = "282219ae7dc44096a618aeded72dcf8d";
-	public static final String clientSecret = "7c8ada1ae58e431bb2a19160e9a646b8";
-	public static final String redirectURI = "https://api.spotify.com/";
-	public static final Api api = Api.builder().clientId(clientId).clientSecret(clientSecret).redirectURI(redirectURI).build();
+	public final String clientId = "282219ae7dc44096a618aeded72dcf8d";
+	public final String clientSecret = "7c8ada1ae58e431bb2a19160e9a646b8";
+	public final String redirectURI = "https://api.spotify.com/";
+	public final Api api = Api.builder().clientId(clientId).clientSecret(clientSecret).redirectURI(redirectURI).build();
 
-	public static SpotifyAlbum searchAlbum(String keyword) {
-		final AlbumSearchRequest request = Spotify.api.searchAlbums(keyword).offset(0).limit(3).build();
+	public Api getApi() {
+		return api;
+	}
+	
+	public SpotifyAlbum searchAlbum(String keyword) {
+		final AlbumSearchRequest request = api.searchAlbums(keyword).offset(0).limit(3).build();
 		String id = "";
 
 		try {
@@ -34,8 +38,8 @@ public class Spotify {
 		return new SpotifyAlbum(id);
 	}
 
-	public static SpotifyTrack searchTrack(String keyword) {
-		final TrackSearchRequest request = Spotify.api.searchTracks(keyword).market("US").build();
+	public SpotifyTrack searchTrack(String keyword) {
+		final TrackSearchRequest request = api.searchTracks(keyword).market("US").build();
 		String id = "";
 
 		try {
@@ -48,8 +52,8 @@ public class Spotify {
 		return new SpotifyTrack(id);
 	}
 
-	public static SpotifyArtist searchArtist(String keyword) {
-		final ArtistSearchRequest request = Spotify.api.searchArtists(keyword).market("US").limit(10).build();
+	public SpotifyArtist searchArtist(String keyword) {
+		final ArtistSearchRequest request = api.searchArtists(keyword).market("US").limit(10).build();
 		String id = "";
 
 		try {
@@ -63,8 +67,8 @@ public class Spotify {
 		return new SpotifyArtist(id);
 	}
 
-	public static SpotifyUser searchUser(String keyword) {
-		final UserRequest request = Spotify.api.getUser(keyword).build();
+	public SpotifyUser searchUser(String keyword) {
+		final UserRequest request = api.getUser(keyword).build();
 		String id = "";
 
 		try {

@@ -14,8 +14,10 @@ public class SpotifyAlbum {
 
 	public SpotifyAlbum(String key) {
 
+		Spotify spotify = new Spotify();
+		
 		this.key = key;
-		AlbumRequest request = Spotify.api.getAlbum(this.key).build();
+		AlbumRequest request = spotify.getApi().getAlbum(this.key).build();
 
 		try {
 			album = request.get();
@@ -27,8 +29,10 @@ public class SpotifyAlbum {
 
 	public SpotifyAlbum() {
 		
+		Spotify spotify = new Spotify();
+		
 		this.key = "7e0ij2fpWaxOEHv5fUYZjd"; //Default album
-		AlbumRequest request = Spotify.api.getAlbum(this.key).build();
+		AlbumRequest request = spotify.getApi().getAlbum(this.key).build();
 		
 		try {
 			album = request.get();

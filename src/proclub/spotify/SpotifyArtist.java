@@ -7,8 +7,10 @@ public class SpotifyArtist {
 	private Artist artist;
 	
 	public SpotifyArtist(String key) {
+		Spotify spotify = new Spotify();
+		
 		this.key = key;
-		ArtistRequest request = Spotify.api.getArtist(this.key).build();
+		ArtistRequest request = spotify.getApi().getArtist(this.key).build();
 
 		try {
 			artist = request.get();
@@ -19,8 +21,10 @@ public class SpotifyArtist {
 	}
 	
 	public SpotifyArtist() {
+		Spotify spotify = new Spotify();
+		
 		this.key = "08td7MxkoHQkXnWAYD8d6Q";
-		ArtistRequest request = Spotify.api.getArtist(this.key).build();
+		ArtistRequest request = spotify.getApi().getArtist(this.key).build();
 
 		try {
 			artist = request.get();

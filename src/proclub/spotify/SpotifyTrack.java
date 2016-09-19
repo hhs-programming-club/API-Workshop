@@ -12,8 +12,10 @@ public class SpotifyTrack {
 	private Track track;
 
 	public SpotifyTrack(String key) {
+		Spotify spotify = new Spotify();
+		
 		this.key = key;
-		TrackRequest request = Spotify.api.getTrack(this.key).build();
+		TrackRequest request = spotify.getApi().getTrack(this.key).build();
 
 		try {
 			track = request.get();
@@ -24,8 +26,10 @@ public class SpotifyTrack {
 	}
 
 	public SpotifyTrack() {
+		Spotify spotify = new Spotify();
+		
 		this.key = "7oK9VyNzrYvRFo7nQEYkWN";
-		TrackRequest request = Spotify.api.getTrack(this.key).build();
+		TrackRequest request = spotify.getApi().getTrack(this.key).build();
 
 		try {
 			track = request.get();

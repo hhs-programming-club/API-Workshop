@@ -21,16 +21,18 @@ public class Main extends ProClub.Beginner{
 		println(wr.getPod("Input"));
 
 		//Spotify
-		SpotifyAlbum album = Spotify.searchAlbum("Thriller"); //Album name goes here
+		Spotify spotify = new Spotify();
+		
+		SpotifyAlbum album = spotify.searchAlbum("Thriller"); //Album name goes here
 		System.out.println(album.getName());
 
-		SpotifyTrack track = Spotify.searchTrack("Thriller"); //Track name goes here
+		SpotifyTrack track = spotify.searchTrack("Thriller"); //Track name goes here
 		System.out.println(track.getName());
 
-		SpotifyArtist artist = Spotify.searchArtist("Michael Jackson"); //Artist name goes here
+		SpotifyArtist artist = spotify.searchArtist("Michael Jackson"); //Artist name goes here
 		System.out.println(artist.getName());
 
-		SpotifyUser user = Spotify.searchUser("hhsprogrammingclub");
+		SpotifyUser user = spotify.searchUser("hhsprogrammingclub");
 		System.out.println(user.getId());
 	}
 }
