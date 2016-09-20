@@ -19,6 +19,8 @@ Another idea that I had was to have a sort of "easy method" kind of thing. All m
 
 ## Wikipedia
 
+	Google Doc: https://docs.google.com/document/d/104aNss_nVr8XIltHTlmQO20xpZR88Yoq91x9j5jyEzI/edit?usp=sharing
+
 ## Dropbox
 
 ## Spotify
