@@ -10,10 +10,9 @@ public class WolframExample extends ProClub.Beginner{
 		//Wolfram Alpha
 		WolframAlpha wa = new WolframAlpha();
 		wa.auth();
-		wa.prepareQuery("how many people are in my country");
+		wa.prepareQuery("what is the value of pi?");
 		WolframResponse wr = wa.executeQuery();
-		println(wr);
-		println(wr.getPods());
-		println(wr.getPod("Input"));
+		String output = wr.getPod("Decimal approximation");
+		System.out.println(output);
 	}
 }
