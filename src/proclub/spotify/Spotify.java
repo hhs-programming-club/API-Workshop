@@ -12,7 +12,14 @@ import com.wrapper.spotify.models.SimpleAlbum;
 import com.wrapper.spotify.models.Track;
 import com.wrapper.spotify.models.User;
 
-public class Spotify {
+import proclub.api.API;
+
+public class Spotify extends API{
+
+	public Spotify() {
+		super("Spotify");
+	}
+
 	public final String clientId = "282219ae7dc44096a618aeded72dcf8d";
 	public final String clientSecret = "7c8ada1ae58e431bb2a19160e9a646b8";
 	public final String redirectURI = "https://api.spotify.com/";
@@ -32,7 +39,7 @@ public class Spotify {
 			id = albumSearchResult.getItems().get(0).getId();
 
 		} catch (Exception e) {
-			System.out.println("Something went wrong! " + e.getMessage());
+			warn("Something went wrong! " + e.getMessage());
 		}
 
 		return new SpotifyAlbum(id);
@@ -46,7 +53,7 @@ public class Spotify {
 			final Page<Track> trackSearchResult = request.get();
 			id = trackSearchResult.getItems().get(0).getId();
 		} catch (Exception e) {
-			System.out.println("Something went wrong! " + e.getMessage());
+			warn("Something went wrong! " + e.getMessage());
 		}
 
 		return new SpotifyTrack(id);
@@ -61,7 +68,7 @@ public class Spotify {
 			final List<Artist> artists = artistSearchResult.getItems();
 			id = artists.get(0).getId();
 		} catch (Exception e) {
-			System.out.println("Something went wrong! " + e.getMessage());
+			warn("Something went wrong! " + e.getMessage());
 		}
 
 		return new SpotifyArtist(id);
@@ -75,7 +82,7 @@ public class Spotify {
 			final User user = request.get();
 			id = user.getId(); 
 		} catch (Exception e) {
-			System.out.println("Something went wrong! " + e.getMessage());
+			warn("Something went wrong! " + e.getMessage());
 		}
 
 		return new SpotifyUser(id);

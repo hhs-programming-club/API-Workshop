@@ -1,12 +1,14 @@
 package proclub.twitter;
 
+import proclub.api.API;
 import twitter4j.Twitter;
 import twitter4j.TwitterFactory;
 import twitter4j.conf.ConfigurationBuilder;
 
-public class TwitterAPI {
+public class TwitterAPI extends API {
 	
-	public TwitterAPI() {		
+	public TwitterAPI() {
+		super("Twitter");
 	}
 	
 	public static Twitter getApi() {
@@ -20,5 +22,4 @@ public class TwitterAPI {
 		Twitter twitter = tf.getInstance();
 		return twitter;
 	}
-
 }
